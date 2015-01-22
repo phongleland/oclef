@@ -1,13 +1,13 @@
 class HomeController < ApplicationController
+
+  def dashboard
+    
+  end
+  
   def index
   end
 
   def about
   end
 
-  def login
-  end
-
-  def register
-  end
 end

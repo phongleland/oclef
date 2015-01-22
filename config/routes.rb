@@ -1,18 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
   
   get 'home/index'
-
   get 'home/about'
-
-  get 'home/login'
-
-  get 'home/register'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  authenticated :user do
+    root :to => "home#dashboard", :as => "authenticated_root"
+  end
+  
   root 'home#index'
 
   # Example of regular route:
