@@ -1,0 +1,11 @@
+facebook:
+  key: "" 
+  secret: ""
+  
+twitter:
+  key: ""
+  secret: ""
+  
+linked_in:
+  key: ""
+  secret: ""
