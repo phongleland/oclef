@@ -3,7 +3,7 @@
 Devise.setup do |config|
   config.omniauth :facebook, OMNIAUTH_CONFIG['facebook']['key'], OMNIAUTH_CONFIG['facebook']['secret']
   config.omniauth :twitter, OMNIAUTH_CONFIG['twitter']['key'], OMNIAUTH_CONFIG['twitter']['secret']
-  config.omniauth :linked_in, OMNIAUTH_CONFIG['linked_in']['key'], OMNIAUTH_CONFIG['linked_in']['secret']
+  config.omniauth :linkedin, OMNIAUTH_CONFIG['linked_in']['key'], OMNIAUTH_CONFIG['linked_in']['secret']
     
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
