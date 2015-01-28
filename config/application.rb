@@ -32,5 +32,12 @@ module Oclef
         Devise::UnlocksController.layout proc{ |controller| user_signed_in? ? "application"   : "home" }           
         Devise::PasswordsController.layout proc{ |controller| user_signed_in? ? "application"   : "home" }     
     end
+    
+    #autoload paths
+    config.autoload_paths += %W(#{config.root}/app/forms)
+    
+    #refactor routs
+    routes = Dir[Rails.root.join("config/routes/*.rb")] + config.paths['config/routes.rb']
+    config.paths['config/routes.rb'] = routes
   end
 end
