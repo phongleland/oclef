@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204094119) do
+ActiveRecord::Schema.define(version: 20150204102201) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street_1"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20150204094119) do
     t.string   "province"
     t.string   "postal_code"
     t.string   "country"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
   end
 
   create_table "books", force: :cascade do |t|
@@ -43,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150204094119) do
     t.integer  "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "is_active"
   end
 
   add_index "fellowships", ["school_id"], name: "index_fellowships_on_school_id"
@@ -71,10 +74,8 @@ ActiveRecord::Schema.define(version: 20150204094119) do
     t.string   "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "address_id"
   end
 
-  add_index "locations", ["address_id"], name: "index_locations_on_address_id"
   add_index "locations", ["school_id"], name: "index_locations_on_school_id"
 
   create_table "mentorships", force: :cascade do |t|
@@ -121,10 +122,7 @@ ActiveRecord::Schema.define(version: 20150204094119) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "address_id"
   end
-
-  add_index "parents", ["address_id"], name: "index_parents_on_address_id"
 
   create_table "schools", force: :cascade do |t|
     t.string   "name"

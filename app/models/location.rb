@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
   belongs_to :school
-  belongs_to :address
+  has_one :address, as: :addressable, dependent: :destroy
+  
 end
