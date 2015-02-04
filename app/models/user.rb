@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  belongs_to :profile, polymorphic: true
+  
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
     

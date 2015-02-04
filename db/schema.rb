@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129063106) do
+ActiveRecord::Schema.define(version: 20150204094119) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street_1"
+    t.string   "street_2"
+    t.string   "city"
+    t.string   "province"
+    t.string   "postal_code"
+    t.string   "country"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +38,16 @@ ActiveRecord::Schema.define(version: 20150129063106) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "fellowships", force: :cascade do |t|
+    t.integer  "school_id"
+    t.integer  "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "fellowships", ["school_id"], name: "index_fellowships_on_school_id"
+  add_index "fellowships", ["teacher_id"], name: "index_fellowships_on_teacher_id"
+
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -37,6 +58,82 @@ ActiveRecord::Schema.define(version: 20150129063106) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
+  create_table "instruments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer  "school_id"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "telephone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "address_id"
+  end
+
+  add_index "locations", ["address_id"], name: "index_locations_on_address_id"
+  add_index "locations", ["school_id"], name: "index_locations_on_school_id"
+
+  create_table "mentorships", force: :cascade do |t|
+    t.integer  "teacher_id"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "mentorships", ["student_id"], name: "index_mentorships_on_student_id"
+  add_index "mentorships", ["teacher_id"], name: "index_mentorships_on_teacher_id"
+
+  create_table "musicalities", force: :cascade do |t|
+    t.integer  "teacher_id"
+    t.integer  "instrument_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "musicalities", ["instrument_id"], name: "index_musicalities_on_instrument_id"
+  add_index "musicalities", ["teacher_id"], name: "index_musicalities_on_teacher_id"
+
+  create_table "parent_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parentages", force: :cascade do |t|
+    t.integer  "parent_id"
+    t.integer  "student_id"
+    t.integer  "parent_type_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "parentages", ["parent_id"], name: "index_parentages_on_parent_id"
+  add_index "parentages", ["parent_type_id"], name: "index_parentages_on_parent_type_id"
+  add_index "parentages", ["student_id"], name: "index_parentages_on_student_id"
+
+  create_table "parents", force: :cascade do |t|
+    t.string   "name"
+    t.string   "telephone"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "address_id"
+  end
+
+  add_index "parents", ["address_id"], name: "index_parents_on_address_id"
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "website"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "songs", force: :cascade do |t|
     t.integer  "book_id"
     t.integer  "start_page"
@@ -45,6 +142,25 @@ ActiveRecord::Schema.define(version: 20150129063106) do
     t.integer  "composer_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "name"
+    t.date     "dob"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "telephone"
+    t.string   "email"
+    t.text     "bio"
+    t.text     "education"
+    t.text     "honors"
+    t.text     "experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

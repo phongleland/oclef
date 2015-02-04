@@ -2,7 +2,8 @@
 
 <h1>Listing Books</h1>
 
-<table>
+<div class="table-responsive">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -21,7 +22,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'New Book', new_book_path %>
