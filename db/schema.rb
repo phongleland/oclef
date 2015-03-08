@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204102201) do
+ActiveRecord::Schema.define(version: 20150308132637) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street_1"
@@ -26,11 +26,37 @@ ActiveRecord::Schema.define(version: 20150204102201) do
     t.string   "addressable_type"
   end
 
+  create_table "assignments", force: :cascade do |t|
+    t.integer  "teacher_id"
+    t.integer  "student_id"
+    t.integer  "song_id"
+    t.integer  "tempo"
+    t.boolean  "is_recording_required"
+    t.text     "notes"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "assignments", ["song_id"], name: "index_assignments_on_song_id"
+  add_index "assignments", ["student_id"], name: "index_assignments_on_student_id"
+  add_index "assignments", ["teacher_id"], name: "index_assignments_on_teacher_id"
+
   create_table "books", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "notes"
+    t.integer  "user_id"
+    t.integer  "assignment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "comments", ["assignment_id"], name: "index_comments_on_assignment_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "composers", force: :cascade do |t|
     t.string   "name"
@@ -83,6 +109,8 @@ ActiveRecord::Schema.define(version: 20150204102201) do
     t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date     "start_date"
+    t.date     "end_date"
   end
 
   add_index "mentorships", ["student_id"], name: "index_mentorships_on_student_id"

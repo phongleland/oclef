@@ -5,5 +5,23 @@
   <%= @instrument.name %>
 </p>
 
+<h3>Teachers</h3>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @instrument.teachers.each do |teacher| %>
+    <tr>
+      <td><%= link_to(teacher.name, teacher) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
 <%= link_to 'Edit', edit_instrument_path(@instrument) %> |
 <%= link_to 'Back', instruments_path %>

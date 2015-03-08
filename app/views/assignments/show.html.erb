@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date Assigned:</strong>
+  <%= @assignment.created_at.strftime("%m-%d-%YY") %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= link_to(@assignment.teacher.name, @assignment.teacher) %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= link_to(@assignment.student.name, @assignment.student) %>
+</p>
+
+<p>
+  <strong>Song:</strong>
+  <%= link_to(@assignment.song.title, @assignment.song) %>
+</p>
+
+<p>
+  <strong>Book:</strong>
+  <%= link_to(@assignment.song.book.title, @assignment.song.book) %>
+</p>
+
+<p>
+  <strong>Pages:</strong>
+  <%= @assignment.song.pages %>
+</p>
+
+<p>
+  <strong>Tempo:</strong>
+  <%= @assignment.tempo %>
+</p>
+
+<p>
+  <strong>Is recording required:</strong>
+  <%= @assignment.is_recording_required %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @assignment.notes %>
+</p>
+
+<%= link_to 'Edit', edit_assignment_path(@assignment) %> 
+
+<h3>Comments</h3>
+<%= form_for(@comment) do |f| %>
+  <%= f.hidden_field :assignment_id %>
+  <%= f.text_area :notes %>
+  <%= f.submit %>
+<% end %>
+<% @assignment.comments.each do |comment| %>
+<div>
+  <b><%= comment.user.email %> says:</b><br>
+  <p><%= comment.notes %></p>
+  <i><%= comment.created_at.strftime("%m-%d-%Y") %></i>
+  <hr>
+</div>
+<% end %>

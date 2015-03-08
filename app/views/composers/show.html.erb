@@ -15,5 +15,27 @@
   <%= @composer.bio %>
 </p>
 
+<h3>Songs</h3>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Song</th>
+      <th>Composer</th>
+      <th>Page</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @composer.songs.each do |song| %>
+    <tr>
+      <td><%= link_to(song.title, song) %></td>
+      <td><%= link_to(song.book.title, song.book) %></td>
+      <td><%= song.pages %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
 <%= link_to 'Edit', edit_composer_path(@composer) %> |
 <%= link_to 'Back', composers_path %>

@@ -1,8 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @song.title %>
+</p>
+
+<p>
+  <strong>Composer:</strong>
+  <%= link_to(@song.composer.name, @song.composer) %>
+</p>
+
 <p>
   <strong>Book:</strong>
-  <%= @song.book_id %>
+  <%= link_to(@song.book.title, @song.book) %>
 </p>
 
 <p>
@@ -15,15 +27,27 @@
   <%= @song.end_page %>
 </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @song.title %>
-</p>
-
-<p>
-  <strong>Composer:</strong>
-  <%= @song.composer_id %>
-</p>
-
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
+
+<h3>Assignments</h3>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Song</th>
+      <th>Teacher</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @song.assignments.each do |assignment| %>
+    <tr>
+      <td><%= link_to(assignment.created_at.strftime("%m-%d-%Y"), assignment) %></td>
+      <td><%= assignment.student.name %></td>
+      <td><%= assignment.teacher.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

@@ -25,5 +25,38 @@
   <%= @teacher.experience %>
 </p>
 
+<p>
+  <strong>Instruments :</strong>
+  <%= @teacher.instruments.map{|item| link_to(item.name, item)}.join(',').html_safe %>
+</p>
+
+<p>
+  <strong>Schools :</strong>
+  <%= @teacher.schools.map{|item| link_to(item.name, item)}.join(',').html_safe %>
+</p>
+
+
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>
+
+<h3>Assignments</h3>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Song</th>
+      <th>Student</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teacher.assignments.each do |assignment| %>
+    <tr>
+      <td><%= link_to(assignment.created_at.strftime("%m-%d-%Y"), assignment) %></td>
+      <td><%= assignment.student.name %></td>
+      <td><%= assignment.song.title %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

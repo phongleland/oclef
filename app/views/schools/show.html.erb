@@ -5,5 +5,23 @@
   <%= @school.name %>
 </p>
 
+<h3>Teachers</h3>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @school.teachers.each do |teacher| %>
+    <tr>
+      <td><%= link_to(teacher.name, teacher) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
 <%= link_to 'Edit', edit_school_path(@school) %> |
 <%= link_to 'Back', schools_path %>

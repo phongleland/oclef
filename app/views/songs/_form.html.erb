@@ -11,9 +11,18 @@
     </div>
   <% end %>
 
+  
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :composer_id %><br>
+    <%= f.collection_select :composer_id, Composer.all, :id, :name %>
+  </div>
   <div class="field">
     <%= f.label :book_id %><br>
-    <%= f.number_field :book_id %>
+    <%= f.collection_select :book_id, Book.all, :id, :title %>
   </div>
   <div class="field">
     <%= f.label :start_page %><br>
@@ -23,14 +32,7 @@
     <%= f.label :end_page %><br>
     <%= f.number_field :end_page %>
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :composer_id %><br>
-    <%= f.number_field :composer_id %>
-  </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

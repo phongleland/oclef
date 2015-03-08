@@ -14,6 +14,7 @@ class ParentsController < ApplicationController
 
   def new
     @parent = Parent.new
+    @parent.parentages.build({:student_id=>params[:student_id]})
     respond_with(@parent)
   end
 
@@ -42,6 +43,6 @@ class ParentsController < ApplicationController
     end
 
     def parent_params
-      params.require(:parent).permit(:name, :telephone, :location_id)
+      params.require(:parent).permit(:name, :telephone, :email, :parentages_attributes => [:parent_type_id, :student_id])
     end
 end

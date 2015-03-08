@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: assignments
+#
+#  id                    :integer          not null, primary key
+#  teacher_id            :integer
+#  student_id            :integer
+#  song_id               :integer
+#  tempo                 :integer
+#  is_recording_required :boolean
+#  notes                 :text
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  teacher_id: 
+  student_id: 
+  song_id: 
+  tempo: 1
+  is_recording_required: false
+
+two:
+  teacher_id: 
+  student_id: 
+  song_id: 
+  tempo: 1
+  is_recording_required: false

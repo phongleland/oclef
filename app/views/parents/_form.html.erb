@@ -1,4 +1,5 @@
 <%= form_for(@parent) do |f| %>
+
   <% if @parent.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
@@ -15,13 +16,21 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <%= f.fields_for :parentages do |builder| %>
+      <div class="field">
+        <%= builder.label 'Relation' %><br>
+        <%= builder.collection_select :parent_type_id, ParentType.all, :id, :name  %>
+        <%= builder.hidden_field :student_id %>
+      </div>
+  <% end %>
+  
   <div class="field">
     <%= f.label :telephone %><br>
     <%= f.text_field :telephone %>
   </div>
   <div class="field">
-    <%= f.label :location_id %><br>
-    <%= f.text_field :location_id %>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
   </div>
   <div class="actions">
     <%= f.submit %>

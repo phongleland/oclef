@@ -5,5 +5,27 @@
   <%= @book.title %>
 </p>
 
+<h3>Songs</h3>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Song</th>
+      <th>Composer</th>
+      <th>Page</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @book.songs.each do |song| %>
+    <tr>
+      <td><%= link_to(song.title, song) %></td>
+      <td><%= link_to(song.composer.name, song.composer) %></td>
+      <td><%= song.pages %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
