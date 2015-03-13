@@ -22,7 +22,10 @@ class TeachersController < ApplicationController
 
   def create
     @teacher = Teacher.new(teacher_params)
-    flash[:notice] = 'Teacher was successfully created.' if @teacher.save
+    if @teacher.save
+      InviteMailer.teacher(@teacher.id).deliver_now!
+      flash[:notice] = 'Teacher was successfully created.' 
+    end
     respond_with(@teacher)
   end
 
@@ -42,6 +45,6 @@ class TeachersController < ApplicationController
     end
 
     def teacher_params
-      params.require(:teacher).permit(:name, :bio, :education, :honors, :experience, :instrument_ids => [], :school_ids => [])
+      params.require(:teacher).permit(:name, :email, :bio, :education, :honors, :experience, :instrument_ids => [], :school_ids => [])
     end
 end

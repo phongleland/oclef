@@ -28,7 +28,7 @@
     <% @student.parentages.each do |parentage| %>
     <tr>
       <td><%= link_to(parentage.parent.name, parentage.parent) %></td>
-      <td><%= parentage.parent_type.name %></td>
+      <td><%= parentage.parent_type.name if parentage.parent_type %></td>
       <td><%= parentage.parent.telephone %></td>
       <td><%= parentage.parent.email %></td>
     </tr>
@@ -81,4 +81,6 @@
   </tbody>
 </table>
 </div>
+
+<%= link_to 'Add New', new_student_assignment_path(@student) %> 
 

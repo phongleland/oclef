@@ -1,0 +1,23 @@
+<%= content_for :title do %>
+  <%= @subject %>
+<% end %>
+
+<%= content_for :salutation do %>
+  Dear <%= @parent.name %>
+<% end %>
+
+<%= content_for :lead do %>
+  Your child's teacher uses Oclef
+<% end %>
+
+<%= content_for :message do %>
+  Oclef is an app used by your child's teacher to manage homework lesson plans.
+  Click the link below to register and see all your child's homework.  Stay informed and get involved!
+<% end %>
+
+<%= content_for :callout do %>
+  <%= link_to "Click To Register", @accept_invitation_url %>
+<% end %>
+
+
+<%= render template: '/templates/basic_email' %>

@@ -23,7 +23,10 @@ class ParentsController < ApplicationController
 
   def create
     @parent = Parent.new(parent_params)
-    flash[:notice] = 'Parent was successfully created.' if @parent.save
+    if @parent.save
+      flash[:notice] = 'Parent was successfully created.' 
+      InviteMailer.relative(@parent.id).deliver_now!
+    end
     respond_with(@parent)
   end
 

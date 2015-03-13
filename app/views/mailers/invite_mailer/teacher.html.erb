@@ -1,0 +1,23 @@
+<%= content_for :title do %>
+  <%= @subject %>
+<% end %>
+
+<%= content_for :salutation do %>
+  Dear <%= @teacher.name %>
+<% end %>
+
+<%= content_for :lead do %>
+  Someone added you as a teacher on Oclef
+<% end %>
+
+<%= content_for :message do %>
+  Oclef is a community of music teachers, parents and students.  Click the link below
+  to join the fastest growing educational network online!
+<% end %>
+
+<%= content_for :callout do %>
+  <%= link_to "Click To Register", @accept_invitation_url %>
+<% end %>
+
+
+<%= render template: '/templates/basic_email' %>

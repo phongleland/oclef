@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use sqlite3 as the database for Active Record
+
 gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -26,7 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # bootstrap
 gem "twitter-bootstrap-rails"
 
-#device
+# performance
+gem 'resque_mailer'
+
+#devise
 gem "devise"
 gem 'omniauth'
 gem 'omniauth-twitter'

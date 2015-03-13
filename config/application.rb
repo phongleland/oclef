@@ -7,6 +7,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 OMNIAUTH_CONFIG = YAML.load_file("config/omniauth.yml")
+MAIL_CONFIG = YAML.load_file("config/mail.yml")
 
 module Oclef
   class Application < Rails::Application
