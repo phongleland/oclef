@@ -16,8 +16,5 @@ set :ssh_options, {:forward_agent => true, :keys => %w(/Users/phongleland/.ssh/o
 set :user, 'deployer'
 set :use_sudo, false
 set :domain, "ec2-52-1-141-202.compute-1.amazonaws.com"
-set :rails_env, 'development'
-
 
 set :deploy_to, "/var/www/#{application}"
-server 'ec2-52-1-141-202.compute-1.amazonaws.com', :app, :web, :db, :primary => true
