@@ -44,12 +44,14 @@ gem 'omniauth-linkedin'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'capistrano', '2.15.5'
-gem 'net-ssh', '2.6.8'
-gem 'rvm-capistrano', '~> 1.3.0'
-gem 'capistrano-ext'
+
 
 group :development, :test do
+  gem 'capistrano', '2.15.5'
+  gem 'net-ssh', '2.6.8'
+  gem 'rvm-capistrano', '~> 1.3.0'
+  gem 'capistrano-ext'
+  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
