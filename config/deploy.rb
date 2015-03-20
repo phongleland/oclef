@@ -2,6 +2,8 @@ require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 require 'rvm/capistrano'
 
+load 'config/deploy/recipes/link_symlinks'
+
 set :stages, %w(production)
 set :default_stage, 'production'
 
@@ -18,3 +20,10 @@ set :use_sudo, false
 set :domain, "ec2-52-1-141-202.compute-1.amazonaws.com"
 
 set :deploy_to, "/var/www/#{application}"
+
+set :linked_items, [
+                      'config/mail.yml',
+                      'config/database.yml',
+                      'config/omniauth.yml',
+                      'config/secrets.yml'
+                    ]
