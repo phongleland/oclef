@@ -3,7 +3,7 @@
 # Table name: students
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  name       :string(255)
 #  dob        :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -6,7 +6,7 @@
 #  book_id     :integer
 #  start_page  :integer
 #  end_page    :integer
-#  title       :string
+#  title       :string(255)
 #  composer_id :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

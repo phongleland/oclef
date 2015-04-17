@@ -1,5 +1,5 @@
 class TimelineController < ApplicationController
-  def indexf
+  def index
 
   end
 end

@@ -8,7 +8,7 @@
 #  song_id               :integer
 #  tempo                 :integer
 #  is_recording_required :boolean
-#  notes                 :text
+#  notes                 :text(65535)
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #

@@ -3,9 +3,9 @@
 # Table name: composers
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  name       :string(255)
 #  dob        :date
-#  bio        :text
+#  bio        :text(65535)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

@@ -4,9 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  school_id  :integer
-#  address_1  :string
-#  address_2  :string
-#  telephone  :string
+#  telephone  :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
